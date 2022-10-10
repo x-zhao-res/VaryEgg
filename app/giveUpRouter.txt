@@ -1,0 +1,18 @@
+  router.get('/zhaoxiang', controller.home.zhaoxiang);
+  router.get('/testpang', controller.test.personnew);
+  router.get('/getcanshu', controller.test.getcanshu);
+  router.get('/getyange/:name', controller.test.getyange);
+  router.post('/add', controller.test.add);
+  router.post('/none', controller.test.noneID);
+  router.post('/cookieadd', controller.home.cookieadd);
+  router.post('/cookieeditor', controller.home.cookieeditor);
+  router.post('/cookiedelete', controller.home.cookiedelete);
+  router.post('/cookieshow', controller.home.cookieshow);
+  router.post('/middleware', counter, controller.home.middlewareuse);// 在controller里面虽然是普通的函数，但是可以在路由里开启路由生效,中间件生效,中间件可以只针对路由
+  router.get('/newcontest', controller.home.newContext);
+  router.post('/newrequest', controller.home.newRequest);
+  router.get('/newresponse', controller.home.newresponst);
+  router.post('/addGirl', controller.home.addGirlUse);
+  router.get('/showGirl', controller.home.showGirl);
+  router.del('/delGirl', controller.home.delGirl);
+  router.get('/updateGirl', controller.home.updateGirl);
