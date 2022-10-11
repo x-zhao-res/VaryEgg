@@ -5,6 +5,7 @@ module.exports = options => {
     } else {
       ctx.session.counter = 1;
     }
+    if (options) { console.log(''); }
     await next();
   };
 };

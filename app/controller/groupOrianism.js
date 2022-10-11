@@ -4,13 +4,13 @@ const { Controller } = require('egg');
 
 class groupOrianism extends Controller {
   async getGroup() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const res = await ctx.service.groupOrianism.getGroup(ctx.query);
     ctx.body = res;
   }
 
   async createGroup() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const res = await ctx.service.groupOrianism.createGroup(ctx.request.body);
     if (res === true) {
       ctx.body = {

@@ -8,7 +8,7 @@ class gettime extends Subscription {
     };
   }
   async subscribe() {
-    const a = 1;
+    // const a = 1;
   }
 }
 

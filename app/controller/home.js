@@ -8,13 +8,13 @@ class HomeController extends Controller {
     ctx.body = 'hello';
   }
   async zhaoxiang() { // 函数写接口就行
-    const { ctx } = this;
+    // const { ctx } = this;
     // ctx.body = 'zhaoxianghhhhh';
   }
   async cookieadd() {
     const ctx = this.ctx;
     ctx.session.username = 'zhaoxiang'; // 自动给你增加Session
-    const zhaoname = ctx.session.username; // 这里可以获得拿到的Session属性，修改就是直接修改就好
+    // const zhaoname = ctx.session.username; // 这里可以获得拿到的Session属性，修改就是直接修改就好
     ctx.cookies.set('user', 'zhaoxiang.com', {
       encrypt: true,
     });

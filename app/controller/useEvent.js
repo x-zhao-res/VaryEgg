@@ -4,7 +4,7 @@ const { Controller } = require('egg');
 
 class eventController extends Controller {
   async createEvent() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const resUse = await ctx.service.useEvent.eventCreate(ctx.request.body);
     if (resUse === true) {
       ctx.body = {
@@ -19,12 +19,12 @@ class eventController extends Controller {
     }
   }
   async getEvent() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const res = await ctx.service.useEvent.getEvent(ctx.query);
     ctx.body = res;
   }
   async getEventDetail() {
-    const { ctx, app } = this;
+    const { ctx } = this;
     const res = await ctx.service.useEvent.getEventDetail(ctx.query);
     ctx.body = res;
   }

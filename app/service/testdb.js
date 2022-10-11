@@ -12,7 +12,6 @@ class testdb extends Service {
       console.log(error);
     }
   }
-  async delGirl() {}
   async changeGirl(params) {
     try {
       const app = this.app;
