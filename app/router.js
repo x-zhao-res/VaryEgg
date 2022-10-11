@@ -19,4 +19,7 @@ module.exports = app => {
   router.get('/getOrianismName', controller.orianism.getOrianismName);
   router.get('/getGroup', controller.groupOrianism.getGroup);
   router.post('/creatGroup', controller.groupOrianism.createGroup);
+  router.post('/eventCreate', controller.useEvent.createEvent);
+  router.get('/getEvent', controller.useEvent.getEvent);
+  router.get('/getEventDetail', controller.useEvent.getEventDetail);
 };

@@ -53,7 +53,6 @@ class oranismService extends Service {
   async OranismDel(params) {
     try {
       const app = this.app;
-
     } catch (error) {
       console.log(error);
     }
