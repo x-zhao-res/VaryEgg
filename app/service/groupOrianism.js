@@ -17,6 +17,20 @@ class GroupOrianismService extends Service {
     }
   }
 
+  async deleteGroup(params) {
+    try {
+      const app = this.app;
+      const res = await app.mysql.delete('group', {
+        ...params,
+      });
+      if (res.affectedRows !== 0) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async createGroup(data) {
     try {
       const app = this.app;

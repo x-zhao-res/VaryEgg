@@ -28,5 +28,20 @@ class eventController extends Controller {
     const res = await ctx.service.useEvent.getEventDetail(ctx.query);
     ctx.body = res;
   }
+  async abadonEvent() {
+    const { ctx } = this;
+    const res = await ctx.service.useEvent.abandonEvent(ctx.query);
+    if (res === true) {
+      ctx.body = {
+        message: '修改成功',
+        status: 200,
+      };
+    } else {
+      ctx.body = {
+        message: '修改失败',
+        status: 200,
+      };
+    }
+  }
 }
 module.exports = eventController;

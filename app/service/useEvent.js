@@ -36,11 +36,10 @@ class eventService extends Service {
             name: group.groupName,
             attributeNum: group.attributeNum,
             attribute: group.varyAttribute,
-            fuckInterval: group.fuckInterval,
+            fuckState: group.fuckState,
           },
           orianismItem: {
-            upTime: orianism.upTime,
-            babyTime: orianism.babyTime,
+            ...orianism,
           },
         });
       }
@@ -75,6 +74,22 @@ class eventService extends Service {
     } catch (error) {
       console.log(error);
     }
+  }
+  async abandonEvent(params) {
+    try {
+      const app = this.app;
+      // 只传ID，状态
+      const res = await app.mysql.update('event', {
+        ...params,
+      });
+      if (res.protocol41 === true) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }
 
