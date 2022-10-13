@@ -34,6 +34,7 @@ class eventService extends Service {
           belongTribe: group.belongTribe,
           groupItem: {
             name: group.groupName,
+            id: group.id,
             attributeNum: group.attributeNum,
             attribute: group.varyAttribute,
             fuckState: group.fuckState,
@@ -78,7 +79,8 @@ class eventService extends Service {
   async abandonEvent(params) {
     try {
       const app = this.app;
-      // 只传ID，状态
+      // 只传ID，状态，变异点数默认为0
+      // 废弃事件不计入次数
       const res = await app.mysql.update('event', {
         ...params,
       });
@@ -90,6 +92,39 @@ class eventService extends Service {
       console.log(error);
     }
 
+  }
+
+  async inRecord(params) {
+    try {
+      const app = this.app;
+      const belongGroupId = params.groupId;
+      const orianismId = params.orianismId;
+      const eventId = params.id;
+      const numVary = params.varyNum;
+      const orianismInf = await app.mysql.get('orianism', { id: orianismId });
+      const groupInf = await app.mysql.get('group', { id: belongGroupId });
+      const changeVaryNum = await app.mysql.update('orianism', {
+        id: orianismId,
+        varyAllNum: orianismInf.varyAllNum + 1, // 增加变异次数
+      });
+      const changeGroupInf = await app.mysql.update('group', {
+        id: belongGroupId,
+        fuckState: 0, // 刷新贤者状态
+        lastFuckTime: (new Date().getTime()).toString(), // 修改为当前时间
+        attributeNum: groupInf.attributeNum + numVary, // 增加属性
+      });
+      const changeEventInf = await app.mysql.update('event', {
+        id: eventId,
+        eventState: 1, // 修改变异状态
+      });
+      return {
+        changeGroupInf,
+        changeVaryNum,
+        changeEventInf,
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
