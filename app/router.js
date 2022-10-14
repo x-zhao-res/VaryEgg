@@ -24,4 +24,6 @@ module.exports = app => {
   router.get('/getEvent', controller.useEvent.getEvent);
   router.get('/getEventDetail', controller.useEvent.getEventDetail);
   router.get('/abadonEvent', controller.useEvent.abadonEvent);
+  router.get('/recordEvent', controller.useEvent.recordEvent);
+  router.get('/changeTime', controller.useEvent.changeTime);
 };

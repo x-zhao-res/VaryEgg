@@ -6,6 +6,15 @@ class GroupOrianismService extends Service {
   async getGroup(params) {
     try {
       const app = this.app;
+      // const authGroupFuckState = await app.mysql.select('group', {});
+      // for (let authNum = 0; authNum < authGroupFuckState.length; authNum++) {
+      //   if ((parseInt(authGroupFuckState[authNum].lastFuckTime) + authGroupFuckState[authNum].fuckInterval * 60000) > (new Date().getTime)) {
+      //     await app.mysql.update('group', {
+      //       id: authGroupFuckState[authNum].id,
+      //       fuckState: 1,
+      //     });
+      //   }
+      // }
       const res = await app.mysql.select('group', {
         where: {
           ...params,
